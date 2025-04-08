@@ -1,53 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_s_p.c                                         :+:      :+:    :+:   */
+/*   move_push.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/13 14:14:46 by eieong            #+#    #+#             */
-/*   Updated: 2025/03/19 12:32:14 by eieong           ###   ########.fr       */
+/*   Created: 2025/04/08 13:47:26 by eieong            #+#    #+#             */
+/*   Updated: 2025/04/08 13:47:45 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	do_sa(t_stack **a)
-{
-	t_stack	*temp;
-
-	temp = *a;
-	*a = (*a)->next;
-	temp->(*a)->next;
-	(*a)->next = temp;
-	write(1, "sa\n", 3);
-}
-
-void	do_sb(t_stack **b)
-{
-	t_stack	*temp;
-
-	temp = *b;
-	*b = (*b)->next;
-	temp->(*b)->next;
-	(*b)->next = temp;
-	write(1, "sb\n", 3);
-}
-
-void	do_ss(t_stack **a, t_stack **b)
-{
-	t_stack	*temp;
-
-	temp = *a;
-	*a = (*a)->next;
-	temp->(*a)->next;
-	(*a)->next = temp;
-	temp = *b;
-	*b = (*b)->next;
-	temp->(*b)->next;
-	(*b)->next = temp;
-	write(1, "ss\n", 3);
-}
 
 void	do_pa(t_stack **a, t_stack **b)
 {

@@ -1,46 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_rotate.c                                      :+:      :+:    :+:   */
+/*   move_rev_rotate.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/13 14:32:55 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/08 16:24:36 by eieong           ###   ########.fr       */
+/*   Created: 2025/04/08 14:08:31 by eieong            #+#    #+#             */
+/*   Updated: 2025/04/08 16:25:30 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_bool	do_rotate(t_stack **a)
+static t_bool	do_rev_rotate(t_stack **a)
 {
-	t_stack	*temp;
+	t_stack	*bef_last;
 	t_stack	*last;
 
 	if (!(*a) || !(*a)->next)
 		return (false);
-	temp = *a;
-	*a = (*a)->next;
-	last = ft_listlast(*a);
-	last->next = temp;
-	temp->next = NULL;
+	bef_last = ft_before_lstlast(a);
+	last = ft_listlast(a);
+	bef_last->next = NULL;
+	last->next = *a;
+	*a = last;
 	return (true);
 }
 
-void	do_ra(t_stack **a)
+void	do_rra(t_stack **a)
 {
-	if (do_rotate(a))
-		write(1, "ra\n", 3);
+	if (do_rev_rotate(a))
+		write(1, "rra\n", 4);
 }
 
-void	do_rb(t_stack **b)
+void	do_rrb(t_stack **b)
 {
-	if (do_rotate(b))
-		write(1, "rb\n", 3);
+	if (do_rev_rotate(b))
+		write(1, "rrb\n", 4);
 }
 
-void	do_rr(t_stack **a, t_stack **b)
+void	do_rrr(t_stack **a, t_stack **b)
 {
-	if (do_rotate(a) && do_rotate(b))
-		write(1, "rr\n", 3);
+	if (do_rev_rotate(a) && do_rev_rotate(b))
+		write(1, "rrr\n", 4);
 }

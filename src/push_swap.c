@@ -6,7 +6,7 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 12:09:08 by eieong            #+#    #+#             */
-/*   Updated: 2025/03/25 13:33:20 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/08 17:17:43 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,20 @@ int	stack_sorted(t_stack *stack)
 	}
 	return (1);
 }
+void	add_in_stack(t_stack **a, char *value)
+{
+	t_stack	*new;
+
+	new = malloc(sizeof(*new));
+	if (!new)
+		return (NULL);
+	new->nb = ft_atoi(value);
+	new->next = NULL;
+	if (!*a)
+		*a = new;
+	else
+		ft_listadd_back(*a, new);
+}
 
 /*	if ac = 2
 		split, atoi, check int, check nb arg
@@ -31,11 +45,12 @@ int	stack_sorted(t_stack *stack)
 		ac[i] : atoi, check int, -> stack*/
 
 /*gerer pb atoi ("-" = 0, INT_MIN)*/
-t_bool	check_one_arg(char **av, t_stack *a)
+t_bool	check_one_arg(char **av, t_stack **a)
 {
 	char	**split;
 	int		i;
 
+	i = 0;
 	split = ft_split(av[1], ' ');
 	if (!split)
 		return (NULL);
@@ -43,20 +58,20 @@ t_bool	check_one_arg(char **av, t_stack *a)
 		return (false);
 	while (split[i])
 	{
-		// stack.nb = ft_atoi(split[i]);
-		// stack.index = i;
+		add_in_stack(*a, split[i]);
+		i++;
 	}
+	ft_freetab(split);
 }
 
-t_bool	check_args(int ac, char **av, t_stack *a)
+t_bool	check_args(int ac, char **av, t_stack **a)
 {
 	int	i;
 
 	i = 0;
 	while (i++ < ac - 1)
 	{
-		// stack.nb = ft_atoi(av[i]);
-		// stack.index = i - 1;
+		add_in_stack(*a, av[i]);
 	}
 }
 
@@ -73,12 +88,10 @@ int	main(int ac, char **av)
 		check_one_arg(av, a);
 	else if (ac > 2)
 		check_args(ac, av, a);
-		
-	// ini a
 	if (!stack_sorted(a))
 	{
 		if (ft_lstsize(a) == 2)
-			// sa
+			do_sa(a);
 		else if (ft_lstsize(a) == 3)
 			// sort 3
 		else if (ft_lstsize(a) == 4)
