@@ -6,7 +6,7 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 12:09:08 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/08 17:17:43 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/08 17:46:05 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,39 @@ int	stack_sorted(t_stack *stack)
 	}
 	return (1);
 }
-void	add_in_stack(t_stack **a, char *value)
+t_bool	add_in_stack(t_stack **a, char *value)
 {
 	t_stack	*new;
 
 	new = malloc(sizeof(*new));
 	if (!new)
-		return (NULL);
-	new->nb = ft_atoi(value);
+		return (false);
+	new->nb = ft_atol(value);
+	if (new->nb < INT_MIN || new->nb > INT_MAX)
+		return (false);
 	new->next = NULL;
 	if (!*a)
 		*a = new;
 	else
 		ft_listadd_back(*a, new);
+	return (true);
+}
+
+t_bool	arg_is_digit(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	while (str[i])
+	{
+		if (ft_isdigit(str[i]))
+			i++;
+		else
+			return (false);
+	}
+	return (true);
 }
 
 /*	if ac = 2
@@ -58,10 +78,14 @@ t_bool	check_one_arg(char **av, t_stack **a)
 		return (false);
 	while (split[i])
 	{
-		add_in_stack(*a, split[i]);
+		if (!arg_is_digit(split[i]))
+			return (false);
+		if (!add_in_stack(*a, split[i]))
+			return (false);
 		i++;
 	}
 	ft_freetab(split);
+	return (true);
 }
 
 t_bool	check_args(int ac, char **av, t_stack **a)
@@ -71,8 +95,12 @@ t_bool	check_args(int ac, char **av, t_stack **a)
 	i = 0;
 	while (i++ < ac - 1)
 	{
-		add_in_stack(*a, av[i]);
+		if (!arg_is_digit(av[i]))
+			return (false);
+		if (!add_in_stack(*a, av[i]))
+			return (false);
 	}
+	return (true);
 }
 
 int	main(int ac, char **av)

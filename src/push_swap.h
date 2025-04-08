@@ -6,16 +6,19 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 12:03:47 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/08 16:34:37 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/08 17:47:45 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "../libft/ft_printf.h"
-#include "../libft/get_next_line_bonus.h"
-#include "../libft/libft.h"
+# include "../libft/ft_printf.h"
+# include "../libft/get_next_line_bonus.h"
+# include "../libft/libft.h"
+# include <stdlib.h>
+# include <stdio.h>
+# include <limits.h>
 
 typedef enum	e_bool
 {
@@ -44,5 +47,6 @@ void	do_rrr(t_stack **a, t_stack **b);
 t_stack	*ft_listlast(t_stack *lst);
 t_stack	*ft_before_lstlast(t_stack *lst);
 void	ft_listadd_back(t_stack **lst, t_stack *new);
+long	ft_atol(const char *nptr);
 
 #endif
