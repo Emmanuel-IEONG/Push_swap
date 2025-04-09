@@ -6,24 +6,12 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 12:09:08 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/08 17:46:05 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/09 15:54:18 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	stack_sorted(t_stack *stack)
-{
-	if (!stack)
-		return (0);
-	while (stack->next)
-	{
-		if (stack->nb > stack->next->nb)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
-}
 t_bool	add_in_stack(t_stack **a, char *value)
 {
 	t_stack	*new;
@@ -107,6 +95,7 @@ int	main(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
+	int		*sorted_tab;
 
 	a = NULL;
 	b = NULL;
@@ -116,19 +105,10 @@ int	main(int ac, char **av)
 		check_one_arg(av, a);
 	else if (ac > 2)
 		check_args(ac, av, a);
+	sorted_tab = sort_stack_in_tab(a);
 	if (!stack_sorted(a))
-	{
-		if (ft_lstsize(a) == 2)
-			do_sa(a);
-		else if (ft_lstsize(a) == 3)
-			// sort 3
-		else if (ft_lstsize(a) == 4)
-			// sort 4
-		else if (ft_lstsize(a) == 5)
-			// sort 5
-		else
-			// sort stack
-	}
-	free_stack(a);
+		sort_stack(a, b, sorted_tab);
+	clear_stack(a);
+	free(sorted_tab);
 	return (0);
 }

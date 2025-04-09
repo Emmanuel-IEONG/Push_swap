@@ -1,40 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:40:02 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/08 17:40:02 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/09 15:58:09 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atol(const char *nptr)
+void	clear_stack(t_stack **a)
 {
-	long	nb;
-	int		sign;
-	int		i;
+	t_stack	*temp;
+	
+	while (*a)
+	{
+		temp = *a;
+		*a = (*a)->next;
+		free(temp);
+	}
+	*a = NULL;
+}
 
-	nb = 0;
-	sign = 1;
-	i = 0;
-	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
-		i++;
-	if (nptr[i] == '+' || nptr[i] == '-')
+int	ft_listsize(t_stack *lst)
+{
+	int	size;
+
+	size = 0;
+	if (!lst)
+		return (0);
+	while (lst)
 	{
-		if (nptr[i] == '-')
-			sign *= -1;
-		i++;
+		lst = lst->next;
+		size++;
 	}
-	while (nptr[i] >= '0' && nptr[i] <= '9')
-	{
-		nb = nb * 10 + (nptr[i] - '0');
-		i++;
-	}
-	return (nb * sign);
+	return (size);
 }
 
 t_stack	*ft_listlast(t_stack *lst)
