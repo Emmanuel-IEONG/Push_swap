@@ -6,7 +6,7 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:46:06 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/09 16:17:23 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/10 14:07:43 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	sort_four(t_stack **a, t_stack **b)
 	}
 	else if (min_i == 3)
 		do_rra(a);
-	if (!stack_sorted(a))
+	if (!stack_sorted(*a))
 	{
 		do_pb(a, b);
 		sort_three(a);
@@ -80,7 +80,7 @@ void	sort_five(t_stack **a, t_stack **b)
 	}
 	else if (min_i == 4)
 		do_rra(a);
-	if (!stack_sorted(a))
+	if (!stack_sorted(*a))
 	{
 		do_pb(a, b);
 		sort_four(a, b);
@@ -92,7 +92,7 @@ void	sort_stack(t_stack **a, t_stack **b, int *sorted_tab)
 {
 	int	stack_size;
 
-	stack_size = ft_listsize(a);
+	stack_size = ft_listsize(*a);
 	if (stack_size == 2)
 			do_sa(a);
 	else if (stack_size == 3)

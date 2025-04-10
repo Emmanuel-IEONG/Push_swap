@@ -6,7 +6,7 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:21:19 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/09 16:15:18 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/10 14:08:43 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	*sort_stack_in_tab(t_stack **a)
 	int	i;
 	
 	i = 0;
-	sorted_tab = malloc(sizeof(int) * ft_listsize(a));
+	sorted_tab = malloc(sizeof(int) * ft_listsize(*a));
 	if (!sorted_tab)
 		return (NULL);
 	while ((*a)->next)
@@ -56,6 +56,6 @@ int	*sort_stack_in_tab(t_stack **a)
 		i++;
 		(*a) = (*a)->next;
 	}
-	ft_sort_int_tab(sorted_tab, ft_listsize(a));
+	ft_sort_int_tab(sorted_tab, ft_listsize(*a));
 	return (sorted_tab);
 }

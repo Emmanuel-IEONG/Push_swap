@@ -6,7 +6,7 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:08:10 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/09 15:51:25 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/10 14:08:10 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	push_to_b(t_stack **a, t_stack **b, int *sorted_tab, int size)
 
 	start = 0;
 	range = 15;
-	while (ft_listsize(a))
+	while (ft_listsize(*a))
 	{
 		tab_index = get_index_tab(sorted_tab, size, (*a)->nb);
 		if (tab_index <= start)
@@ -50,7 +50,7 @@ void	push_to_a(t_stack **a, t_stack **b)
 	while (*b)
 	{
 		max_i = index_max(b);
-		if (max_i > ft_listsize(b) / 2)
+		if (max_i > ft_listsize(*b) / 2)
 		{
 			while ((*b)->nb != get_max(b))
 				do_rrb(b);

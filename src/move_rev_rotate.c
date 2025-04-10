@@ -6,7 +6,7 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:08:31 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/08 16:25:30 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/10 14:06:55 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static t_bool	do_rev_rotate(t_stack **a)
 
 	if (!(*a) || !(*a)->next)
 		return (false);
-	bef_last = ft_before_lstlast(a);
-	last = ft_listlast(a);
+	bef_last = ft_before_lstlast(*a);
+	last = ft_listlast(*a);
 	bef_last->next = NULL;
 	last->next = *a;
 	*a = last;

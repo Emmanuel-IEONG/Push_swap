@@ -6,7 +6,7 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 12:09:08 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/09 15:54:18 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/10 14:06:01 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_bool	add_in_stack(t_stack **a, char *value)
 	if (!*a)
 		*a = new;
 	else
-		ft_listadd_back(*a, new);
+		ft_listadd_back(a, new);
 	return (true);
 }
 
@@ -61,14 +61,14 @@ t_bool	check_one_arg(char **av, t_stack **a)
 	i = 0;
 	split = ft_split(av[1], ' ');
 	if (!split)
-		return (NULL);
+		return (false);
 	if (split[0] && !split[1])
 		return (false);
 	while (split[i])
 	{
 		if (!arg_is_digit(split[i]))
 			return (false);
-		if (!add_in_stack(*a, split[i]))
+		if (!add_in_stack(a, split[i]))
 			return (false);
 		i++;
 	}
@@ -85,7 +85,7 @@ t_bool	check_args(int ac, char **av, t_stack **a)
 	{
 		if (!arg_is_digit(av[i]))
 			return (false);
-		if (!add_in_stack(*a, av[i]))
+		if (!add_in_stack(a, av[i]))
 			return (false);
 	}
 	return (true);
@@ -102,13 +102,19 @@ int	main(int ac, char **av)
 	if (ac == 1 || (!av[1][0] && ac == 2))
 		return (1);
 	else if (ac == 2)
-		check_one_arg(av, a);
+	{
+		if (!check_one_arg(av, &a))
+			return (1);
+	}
 	else if (ac > 2)
-		check_args(ac, av, a);
-	sorted_tab = sort_stack_in_tab(a);
+	{
+		if (!check_args(ac, av, &a))
+			return (1);
+	}
+	sorted_tab = sort_stack_in_tab(&a);
 	if (!stack_sorted(a))
-		sort_stack(a, b, sorted_tab);
-	clear_stack(a);
+		sort_stack(&a, &b, sorted_tab);
+	clear_stack(&a);
 	free(sorted_tab);
 	return (0);
 }
