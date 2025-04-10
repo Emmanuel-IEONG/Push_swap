@@ -6,7 +6,7 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 14:32:55 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/08 16:24:36 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/10 15:06:25 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,11 @@ void	do_rr(t_stack **a, t_stack **b)
 {
 	if (do_rotate(a) && do_rotate(b))
 		write(1, "rr\n", 3);
+	else
+	{
+		if (do_rotate(a))
+			write(1, "ra\n", 3);
+		if (do_rotate(b))
+			write(1, "rb\n", 3);
+	}
 }

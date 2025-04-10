@@ -6,7 +6,7 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:46:06 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/10 14:07:43 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/10 15:23:55 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,10 @@ t_bool	stack_sorted(t_stack *stack)
 	return (true);
 }
 
-
 void	sort_three(t_stack **a)
 {
 	int	max_i;
-	
+
 	max_i = index_max(a);
 	if (max_i == 0)
 		do_ra(a);
@@ -94,7 +93,7 @@ void	sort_stack(t_stack **a, t_stack **b, int *sorted_tab)
 
 	stack_size = ft_listsize(*a);
 	if (stack_size == 2)
-			do_sa(a);
+		do_sa(a);
 	else if (stack_size == 3)
 		sort_three(a);
 	else if (stack_size == 4)

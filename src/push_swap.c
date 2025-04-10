@@ -6,7 +6,7 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 12:09:08 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/10 14:06:01 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/10 15:20:24 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ t_bool	check_args(int ac, char **av, t_stack **a)
 	int	i;
 
 	i = 0;
+	ft_printf("coucou\n");
 	while (i++ < ac - 1)
 	{
 		if (!arg_is_digit(av[i]))
@@ -88,6 +89,7 @@ t_bool	check_args(int ac, char **av, t_stack **a)
 		if (!add_in_stack(a, av[i]))
 			return (false);
 	}
+	ft_printf("FINI\n");
 	return (true);
 }
 

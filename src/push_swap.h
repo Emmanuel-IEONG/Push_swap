@@ -6,7 +6,7 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 12:03:47 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/09 16:15:51 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/10 15:21:17 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@
 # include <stdio.h>
 # include <limits.h>
 
-typedef enum	e_bool
+typedef enum e_bool
 {
 	false,
 	true
 }				t_bool;
 
-typedef struct	s_stack
+typedef struct s_stack
 {
 	int				nb;
 	struct s_stack	*next;
@@ -45,21 +45,21 @@ void	do_rrb(t_stack **b);
 void	do_rrr(t_stack **a, t_stack **b);
 
 void	clear_stack(t_stack **a);
-int	ft_listsize(t_stack *lst);
+int		ft_listsize(t_stack *lst);
 t_stack	*ft_listlast(t_stack *lst);
 t_stack	*ft_before_lstlast(t_stack *lst);
 void	ft_listadd_back(t_stack **lst, t_stack *new);
 
 long	ft_atol(const char *nptr);
-int	get_index_tab(int *sorted_tab, int size, int nb);
-int	index_max(t_stack **a);
-int	index_min(t_stack **a);
-int	get_max(t_stack **a);
+int		get_index_tab(int *sorted_tab, int size, int nb);
+int		index_max(t_stack **a);
+int		index_min(t_stack **a);
+int		get_max(t_stack **a);
 
 void	push_to_b(t_stack **a, t_stack **b, int *sorted_tab, int size);
 void	push_to_a(t_stack **a, t_stack **b);
 
-int	*sort_stack_in_tab(t_stack **a);
+int		*sort_stack_in_tab(t_stack **a);
 
 t_bool	stack_sorted(t_stack *stack);
 void	sort_three(t_stack **a);

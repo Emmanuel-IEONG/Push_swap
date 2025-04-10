@@ -6,7 +6,7 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:40:02 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/09 15:58:09 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/10 15:22:37 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	clear_stack(t_stack **a)
 {
 	t_stack	*temp;
-	
+
 	while (*a)
 	{
 		temp = *a;
@@ -52,8 +52,8 @@ t_stack	*ft_listlast(t_stack *lst)
 
 t_stack	*ft_before_lstlast(t_stack *lst)
 {
-	t_stack *bef_last;
-	
+	t_stack	*bef_last;
+
 	bef_last = NULL;
 	if (lst)
 	{

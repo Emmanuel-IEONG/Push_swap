@@ -6,7 +6,7 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:47:26 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/08 13:47:45 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/10 15:21:57 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	do_pa(t_stack **a, t_stack **b)
 
 void	do_pb(t_stack **a, t_stack **b)
 {
-	t_stack *temp;
+	t_stack	*temp;
 
 	temp = *b;
 	*b = *a;

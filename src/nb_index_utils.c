@@ -6,7 +6,7 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 14:47:06 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/09 15:56:40 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/10 15:25:00 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,58 +14,64 @@
 
 int	get_max(t_stack **a)
 {
-	int	max;
+	t_stack	*temp;
+	int		max;
 
+	temp = *a;
 	max = INT_MIN;
-	while (*a)
+	while (temp)
 	{
-		if((*a)->nb > max)
-			max = (*a)->nb;
-		(*a) = (*a)->next;
+		if (temp->nb > max)
+			max = temp->nb;
+		temp = temp->next;
 	}
 	return (max);
 }
 
 int	index_min(t_stack **a)
 {
-	int	min;
-	int	i;
-	int	j;
-	
+	t_stack	*temp;
+	int		min;
+	int		i;
+	int		j;
+
+	temp = *a;
 	min = INT_MAX;
 	i = 0;
 	j = 0;
-	while (*a)
+	while (temp)
 	{
-		if ((*a)->nb < min)
+		if (temp->nb < min)
 		{
-			min = (*a)->nb;
+			min = temp->nb;
 			j = i;
 		}
 		i++;
-		(*a) = (*a)->next;
+		temp = temp->next;
 	}
 	return (j);
 }
 
 int	index_max(t_stack **a)
 {
-	int	max;
-	int	i;
-	int	j;
-	
+	t_stack	*temp;
+	int		max;
+	int		i;
+	int		j;
+
+	temp = *a;
 	max = INT_MIN;
 	i = 0;
 	j = 0;
-	while (*a)
+	while (temp)
 	{
-		if ((*a)->nb > max)
+		if (temp->nb > max)
 		{
-			max = (*a)->nb;
+			max = temp->nb;
 			j = i;
 		}
 		i++;
-		(*a) = (*a)->next;
+		temp = temp->next;
 	}
 	return (j);
 }
