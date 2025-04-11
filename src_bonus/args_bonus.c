@@ -6,17 +6,42 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 11:15:28 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/11 18:49:57 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/11 17:10:00 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
+
+long	ft_atol(const char *nptr)
+{
+	long	nb;
+	int		sign;
+	int		i;
+
+	nb = 0;
+	sign = 1;
+	i = 0;
+	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
+		i++;
+	if (nptr[i] == '+' || nptr[i] == '-')
+	{
+		if (nptr[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		nb = nb * 10 + (nptr[i] - '0');
+		i++;
+	}
+	return (nb * sign);
+}
 
 t_bool	add_in_stack(t_stack **a, char *value)
 {
 	t_stack	*new;
 	long	nb;
-
+	
 	new = malloc(sizeof(*new));
 	if (!new)
 		return (false);

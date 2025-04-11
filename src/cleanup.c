@@ -1,39 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_push.c                                        :+:      :+:    :+:   */
+/*   cleanup.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/08 13:47:26 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/11 18:40:33 by eieong           ###   ########.fr       */
+/*   Created: 2025/04/11 16:38:05 by eieong            #+#    #+#             */
+/*   Updated: 2025/04/11 17:12:50 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	do_pa(t_stack **a, t_stack **b)
+void	clear_stack(t_stack **a)
 {
 	t_stack	*temp;
 
-	if (!(*b))
-		return ;
-	temp = *a;
-	*a = *b;
-	*b = (*b)->next;
-	(*a)->next = temp;
-	write(1, "pa\n", 3);
+	while (*a)
+	{
+		temp = *a;
+		*a = (*a)->next;
+		free(temp);
+	}
+	*a = NULL;
 }
 
-void	do_pb(t_stack **a, t_stack **b)
+void	ft_cleaning(t_stack **a, int *tab)
 {
-	t_stack	*temp;
+	if (*a)
+		clear_stack(a);
+	if (tab)
+		free(tab);
+}
 
-	if (!(*a))
-		return ;
-	temp = *b;
-	*b = *a;
-	*a = (*a)->next;
-	(*b)->next = temp;
-	write(1, "pb\n", 3);
+void	ft_exit_err(t_stack **a, int *tab)
+{
+	write(2, "Error\n", 6);
+	ft_cleaning(a, tab);
+	exit(1);
 }

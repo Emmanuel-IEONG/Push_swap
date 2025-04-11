@@ -6,26 +6,11 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 12:09:08 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/11 12:52:48 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/11 19:01:00 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_cleaning(t_stack **a, int *tab)
-{
-	if (*a)
-		clear_stack(a);
-	if (tab)
-		free(tab);
-}
-
-void	ft_exit_err(t_stack **a, int *tab)
-{
-	write(2, "Error\n", 6);
-	ft_cleaning(a, tab);
-	exit(1);
-}
 
 void	parsing(t_stack **a, int ac, char **av, int *sorted_tab)
 {

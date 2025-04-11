@@ -6,24 +6,11 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 11:46:06 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/10 15:23:55 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/11 17:14:23 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_bool	stack_sorted(t_stack *stack)
-{
-	if (!stack)
-		return (false);
-	while (stack->next)
-	{
-		if (stack->nb > stack->next->nb)
-			return (false);
-		stack = stack->next;
-	}
-	return (true);
-}
 
 void	sort_three(t_stack **a)
 {
