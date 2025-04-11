@@ -6,7 +6,7 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 12:03:47 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/10 15:21:17 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/11 12:48:15 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ typedef struct s_stack
 	int				nb;
 	struct s_stack	*next;
 }				t_stack;
+
+t_bool	add_in_stack(t_stack **a, char *value);
+t_bool	arg_is_digit(char *str);
+t_bool	check_one_arg(char **av, t_stack **a);
+t_bool	check_args(int ac, char **av, t_stack **a);
 
 void	do_sa(t_stack **a);
 void	do_sb(t_stack **b);

@@ -6,7 +6,7 @@
 #    By: eieong <eieong@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/13 11:19:32 by eieong            #+#    #+#              #
-#    Updated: 2025/04/10 14:01:05 by eieong           ###   ########.fr        #
+#    Updated: 2025/04/11 11:18:24 by eieong           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ PURPLE		:= \033[0;35m
 LPURPLE		:= \033[1;35m
 
 SRC :=	src/push_swap.c \
+		src/args.c \
 		src/move_push.c \
 		src/move_swap.c \
 		src/move_rotate.c \

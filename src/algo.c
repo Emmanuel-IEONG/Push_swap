@@ -6,11 +6,31 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:08:10 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/10 15:23:04 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/11 12:47:15 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	move_range(int start, int range)
+{
+	start++;
+	range++;
+}
+
+static void	small_nb(t_stack **a, t_stack **b, int index, int range)
+{
+	if (index >= (range + 1))
+	{
+		do_pb(a, b);
+		do_rr(a, b);
+	}
+	else
+	{
+		do_pb(a, b);
+		do_rb(b);
+	}
+}
 
 void	push_to_b(t_stack **a, t_stack **b, int *sorted_tab, int size)
 {
@@ -29,27 +49,13 @@ void	push_to_b(t_stack **a, t_stack **b, int *sorted_tab, int size)
 		else
 			next_tab_index = -1;
 		if (tab_index <= start)
-		{
-			if (next_tab_index >= (range + 1))
-			{
-				do_pb(a, b);
-				do_rr(a, b);
-			}
-			else
-			{
-				do_pb(a, b);
-				do_rb(b);
-			}
-		}
+			small_nb(a, b, next_tab_index, range);
 		else if (tab_index > start && tab_index < range)
 			do_pb(a, b);
 		else if (tab_index >= range)
 			do_ra(a);
 		if (tab_index < range)
-		{
-			start++;
-			range++;
-		}
+			move_range(start, range);
 	}
 }
 

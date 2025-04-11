@@ -6,7 +6,7 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:21:19 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/10 15:22:19 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/11 12:08:37 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	ft_swap(int *a, int *b)
 	*b = hold;
 }
 
-static void	ft_sort_int_tab(int *tab, int size)
+static t_bool	ft_sort_int_tab(int *tab, int size)
 {
 	int	count;
 	int	i;
@@ -32,6 +32,8 @@ static void	ft_sort_int_tab(int *tab, int size)
 		i = 0;
 		while (i < size -1)
 		{
+			if (tab[i] == tab[i +1])
+				return (false);
 			if (tab[i] > tab[i +1])
 				ft_swap(&tab[i], &tab[i +1]);
 			else
@@ -39,6 +41,7 @@ static void	ft_sort_int_tab(int *tab, int size)
 		}
 		count++;
 	}
+	return (true);
 }
 
 int	*sort_stack_in_tab(t_stack **a)
@@ -58,6 +61,7 @@ int	*sort_stack_in_tab(t_stack **a)
 		i++;
 		temp = temp->next;
 	}
-	ft_sort_int_tab(sorted_tab, ft_listsize(*a));
+	if (!ft_sort_int_tab(sorted_tab, ft_listsize(*a)))
+		return (free(sorted_tab), NULL);
 	return (sorted_tab);
 }
