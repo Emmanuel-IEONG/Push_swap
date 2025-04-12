@@ -6,7 +6,7 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:42:21 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/11 17:57:14 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/12 22:09:19 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,9 @@ t_bool	stdinput(t_stack **a, t_stack **b)
 			free(line);
 			return (false);
 		}
+		free(line);
 		print_stack(a, b);
 	}
-	free(line);
 	return (true);
 }
 
@@ -116,7 +116,10 @@ int	main(int ac, char **av)
 	if (!sorted_tab)
 		ft_exit_err(&a, sorted_tab);
 	if (!stdinput(&a, &b))
+	{
+		clear_stack(&b);
 		ft_exit_err(&a, sorted_tab);
+	}
 	if (stack_sorted(a) && !b)
 		ft_printf("OK\n");
 	else
