@@ -6,7 +6,7 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 11:15:28 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/22 11:35:00 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/22 11:54:30 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,13 +86,13 @@ t_bool	check_one_arg(char **av, t_stack **a)
 	if (!split)
 		return (false);
 	if (!split[i])
-		return (false);
+		return (ft_freetab(split), false);
 	while (split[i])
 	{
 		if (!arg_is_digit(split[i]))
-			return (false);
+			return (ft_freetab(split), false);
 		if (!add_in_stack(a, split[i]))
-			return (false);
+			return (ft_freetab(split), false);
 		i++;
 	}
 	ft_freetab(split);
