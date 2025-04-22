@@ -6,7 +6,7 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:42:21 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/22 11:17:16 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/22 11:35:11 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ t_bool	read_instruct(t_stack **a, t_stack **b, char *str)
 t_bool	stdinput(t_stack **a, t_stack **b)
 {
 	char	*line;
-	
+
 	while (1)
 	{
 		line = get_next_line(0);
