@@ -6,7 +6,7 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 11:15:28 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/22 11:54:30 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/22 14:17:21 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_bool	add_in_stack(t_stack **a, char *value)
 		return (false);
 	nb = ft_atol(value);
 	if (nb < INT_MIN || nb > INT_MAX)
-		return (false);
+		return (free(new), false);
 	new->nb = nb;
 	new->next = NULL;
 	if (!*a)
