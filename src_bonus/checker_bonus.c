@@ -6,33 +6,11 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 14:42:21 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/12 22:09:19 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/22 11:17:16 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
-
-void	print_stack(t_stack **a, t_stack **b)
-{
-	t_stack *temp_a;
-	t_stack	*temp_b;
-
-	temp_a = *a;
-	temp_b = *b;
-	ft_printf("STACK A : ");
-	while (temp_a)
-	{
-		ft_printf("[%d] ", temp_a->nb);
-		temp_a = temp_a->next;
-	}
-	ft_printf("\nSTACK B : ");
-	while (temp_b)
-	{
-		ft_printf("[%d] ", temp_b->nb);
-		temp_b = temp_b->next;
-	}
-	ft_printf("\n");
-}
 
 void	parsing(t_stack **a, int ac, char **av, int *sorted_tab)
 {
@@ -82,7 +60,6 @@ t_bool	stdinput(t_stack **a, t_stack **b)
 {
 	char	*line;
 	
-	print_stack(a, b);
 	while (1)
 	{
 		line = get_next_line(0);
@@ -97,7 +74,6 @@ t_bool	stdinput(t_stack **a, t_stack **b)
 			return (false);
 		}
 		free(line);
-		print_stack(a, b);
 	}
 	return (true);
 }
