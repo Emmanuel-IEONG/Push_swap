@@ -6,7 +6,7 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 12:08:10 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/11 19:00:41 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/28 11:28:52 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ void	push_to_b(t_stack **a, t_stack **b, int *sorted_tab, int size)
 			next_tab_index = get_index_tab(sorted_tab, size, (*a)->next->nb);
 		else
 			next_tab_index = -1;
-		if (tab_index <= start)
+		if (tab_index < start)
 			small_nb(a, b, next_tab_index, (range + 1));
-		else if (tab_index > start && tab_index < range)
+		else if (tab_index >= start && tab_index < range)
 			do_pb(a, b);
 		else if (tab_index >= range)
 			do_ra(a);

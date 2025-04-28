@@ -6,7 +6,7 @@
 /*   By: eieong <eieong@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/11 11:15:28 by eieong            #+#    #+#             */
-/*   Updated: 2025/04/23 12:04:56 by eieong           ###   ########.fr       */
+/*   Updated: 2025/04/28 11:33:31 by eieong           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_bool	arg_is_digit(char *str)
 		return (false);
 	if (str[i] == '-' || str[i] == '+')
 		i++;
-	if(!str[i])
+	if (!str[i])
 		return (false);
 	while (str[i])
 	{
